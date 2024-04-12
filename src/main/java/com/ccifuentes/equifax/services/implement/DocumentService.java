@@ -34,7 +34,7 @@ public class DocumentService implements IDocumentService {
 		return documentGenerated;
 	}
 
-	private List<FileDetail> setDocumentinFileDetails(Document document) {
+	List<FileDetail> setDocumentinFileDetails(Document document) {
 		List<FileDetail> fileDetailsWithDocument = new ArrayList<FileDetail>();
 		if (document.getFileDetails() != null) {
 			for (FileDetail fileDetail : document.getFileDetails()) {
