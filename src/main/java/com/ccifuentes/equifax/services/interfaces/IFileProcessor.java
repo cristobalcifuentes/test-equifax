@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ccifuentes.equifax.models.dtos.DocumentDTO;
-import com.ccifuentes.equifax.models.entity.Document;
 
 public interface IFileProcessor {
 	

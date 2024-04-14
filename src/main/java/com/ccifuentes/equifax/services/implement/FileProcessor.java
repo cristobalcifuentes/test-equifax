@@ -44,7 +44,7 @@ public class FileProcessor implements IFileProcessor {
 		return document;
 	}
 
-	public DocumentDTO parseDocumentEntityToDto(Document document) {
+	private DocumentDTO parseDocumentEntityToDto(Document document) {
 	    DocumentDTO documentDTO = new DocumentDTO();
 	    documentDTO.setId(document.getId());
 	    documentDTO.setDate(document.getDate());

@@ -21,83 +21,83 @@ import com.ccifuentes.equifax.repositorys.IFileDetailRepository;
 
 class DocumentServiceTest {
 
-	 private DocumentService documentService;
-	    private IDocumentRepository documentRepository;
-	    private IFileDetailRepository fileDetailRepository;
+	private DocumentService documentService;
+	private IDocumentRepository documentRepository;
+	private IFileDetailRepository fileDetailRepository;
 
-	    @BeforeEach
-	    public void setUp() {
-	        documentRepository = mock(IDocumentRepository.class);
-	        fileDetailRepository = mock(IFileDetailRepository.class);
-	        documentService = new DocumentService(documentRepository, fileDetailRepository);
-	    }
+	@BeforeEach
+	public void setUp() {
+		documentRepository = mock(IDocumentRepository.class);
+		fileDetailRepository = mock(IFileDetailRepository.class);
+		documentService = new DocumentService(documentRepository, fileDetailRepository);
+	}
 
-	    @Test
-	    public void testSaveDocumentWithFileDetails() {
-	        // Given
-	        Document document = new Document();
-	        List<FileDetail> fileDetails = new ArrayList<>();
-	        FileDetail fileDetail = new FileDetail();
-	        fileDetails.add(fileDetail);
-	        document.setFileDetails(fileDetails);
-	        
-	        when(documentRepository.save(any(Document.class))).thenReturn(document);
-	        when(fileDetailRepository.saveAll(anyList())).thenReturn(fileDetails);
+	@Test
+	public void testSaveDocumentWithFileDetails() {
+		// Given
+		Document document = new Document();
+		List<FileDetail> fileDetails = new ArrayList<>();
+		FileDetail fileDetail = new FileDetail();
+		fileDetails.add(fileDetail);
+		document.setFileDetails(fileDetails);
 
-	        // When
-	        Document savedDocument = documentService.saveDocumentwithFileDetails(document);
+		when(documentRepository.save(any(Document.class))).thenReturn(document);
+		when(fileDetailRepository.saveAll(anyList())).thenReturn(fileDetails);
 
-	        // Then
-	        assertNotNull(savedDocument);
-	        assertEquals(fileDetails, savedDocument.getFileDetails());
-	        verify(documentRepository, times(1)).save(any(Document.class));
-	        verify(fileDetailRepository, times(1)).saveAll(anyList());
-	    }
+		// When
+		Document savedDocument = documentService.saveDocumentwithFileDetails(document);
 
-	    @Test
-	    public void testSaveDocumentWithNoFileDetails() {
-	        // Given
-	        Document document = new Document();
-	        
-	        when(documentRepository.save(any(Document.class))).thenReturn(document);
+		// Then
+		assertNotNull(savedDocument);
+		assertEquals(fileDetails, savedDocument.getFileDetails());
+		verify(documentRepository, times(1)).save(any(Document.class));
+		verify(fileDetailRepository, times(1)).saveAll(anyList());
+	}
 
-	        // When
-	        Document savedDocument = documentService.saveDocumentwithFileDetails(document);
+	@Test
+	public void testSaveDocumentWithNoFileDetails() {
+		// Given
+		Document document = new Document();
 
-	        // Then
-	        assertNotNull(savedDocument);
-	        verify(documentRepository, times(1)).save(any(Document.class));
-	    }
+		when(documentRepository.save(any(Document.class))).thenReturn(document);
 
-	    @Test
-	    public void testSetDocumentInFileDetails() {
-	        // Given
-	        Document document = new Document();
-	        FileDetail fileDetail = new FileDetail();
-	        List<FileDetail> fileDetails = new ArrayList<>();
-	        fileDetails.add(fileDetail);
-	        document.setFileDetails(fileDetails);
+		// When
+		Document savedDocument = documentService.saveDocumentwithFileDetails(document);
 
-	        // When
-	        List<FileDetail> result = documentService.setDocumentinFileDetails(document);
+		// Then
+		assertNotNull(savedDocument);
+		verify(documentRepository, times(1)).save(any(Document.class));
+	}
 
-	        // Then
-	        assertNotNull(result);
-	        assertEquals(fileDetails, result);
-	        assertEquals(document, fileDetail.getDocument());
-	    }
+	@Test
+	public void testSetDocumentInFileDetails() {
+		// Given
+		Document document = new Document();
+		FileDetail fileDetail = new FileDetail();
+		List<FileDetail> fileDetails = new ArrayList<>();
+		fileDetails.add(fileDetail);
+		document.setFileDetails(fileDetails);
 
-	    @Test
-	    public void testSetDocumentInFileDetailsWithNullFileDetails() {
-	        // Given
-	        Document document = new Document();
+		// When
+		List<FileDetail> result = documentService.setDocumentinFileDetails(document);
 
-	        // When
-	        List<FileDetail> result = documentService.setDocumentinFileDetails(document);
+		// Then
+		assertNotNull(result);
+		assertEquals(fileDetails, result);
+		assertEquals(document, fileDetail.getDocument());
+	}
 
-	        // Then
-	        assertNotNull(result);
-	        assertTrue(result.isEmpty());
-	    }
+	@Test
+	public void testSetDocumentInFileDetailsWithNullFileDetails() {
+		// Given
+		Document document = new Document();
+
+		// When
+		List<FileDetail> result = documentService.setDocumentinFileDetails(document);
+
+		// Then
+		assertNotNull(result);
+		assertTrue(result.isEmpty());
+	}
 
 }
