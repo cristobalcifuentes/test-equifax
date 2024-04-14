@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "d104a9de-8a4f-4afc-b7da-6edadba8bbbb",
+		"name": "test-equifax",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cargar archivo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcmlzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzMDc5NzM2LCJleHAiOjE3MTMxMTU3MzZ9.dOMEdrnuwPHe3S77nno1s4LQDBrt0S222bLKkwtQVvUUrG39KUeus1I15Gu5wUKpHatpOcRcSLPMFcw_EVxjtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/cristobal/Documents/TEST_EQUIFAX.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1010/file",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1010",
+					"path": [
+						"file"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"cristobal\",\r\n  \"email\": \"cris@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1010/auth/new_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1010",
+					"path": [
+						"auth",
+						"new_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombreUsuario\": \"cris@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1010/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1010",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
