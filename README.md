@@ -11,5 +11,6 @@
 
 
 v2
+
 -se agrega funcionalidad para crear y registrar nuevos usuarios encriptando la contraseña, loguearse en la aplicacion mediante la obtencion de un jwt unico y para lograr procesar el archivo se debe incluir el jwt valido y vigente, de lo contrario se recibira un error 403 como fue solicitado.
 - se agrega coleccion postman con la que se puede revisar las funcionalidades del test 
