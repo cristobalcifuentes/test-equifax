@@ -14,3 +14,6 @@ v2
 
 - se agrega funcionalidad para crear y registrar nuevos usuarios encriptando la contraseña, loguearse en la aplicacion mediante la obtencion de un jwt unico y para lograr procesar el archivo se debe incluir el jwt valido y vigente, de lo contrario se recibira un error 403 como fue solicitado.
 - se agrega coleccion postman con la que se puede revisar las funcionalidades del test 
+
+
+se comienza a  trabajar en el front aun sin terminar. la url para revision de codigo: https://github.com/cristobalcifuentes/test-equifax-front/tree/master
